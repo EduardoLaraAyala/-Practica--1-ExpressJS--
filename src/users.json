@@ -1,0 +1,15 @@
+[
+  {
+    "name": "cesar",
+    "lastName": "Garcia"
+  },
+  {
+    "id": 99,
+    "password": "contraseña123",
+    "first_name": "Juan",
+    "last_name": "Pérez",
+    "username": "juanito99",
+    "email": "juanito@example.com",
+    "gender": "masculino"
+  }
+]
