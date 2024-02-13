@@ -1,19 +1,34 @@
 // Importa el módulo Express
 const express = require('express');
 
-// Crea una instancia de Express
+//crea instancia de Express
 const app = express();
 
-app.get('/', (req, res) => {
+const PORT = 3002;
+
+
+app.get('/users', (req, res) => {
     const { name, lastName } = req.query; // Extrae los parámetros 'name' y 'lastName' del query
     const message = `Hola ${name} ${lastName}`; // Construye el mensaje utilizando los parámetros recibidos
     res.send(message); // Envía el mensaje como respuesta
   });
 
-// Especifica el puerto en el que el servidor escuchará las solicitudes
-const PORT = 3002;
+  app.post('/users', (req, res) => {
+    res.send('Got a POST request');
+  });
 
-// Inicia el servidor y haz que escuche en el puerto especificado
+  app.put('/users', (req, res) => {
+    res.send('Got a PUT request at /user');
+  });
+
+  app.delete('/users', (req, res) => {
+    res.send('Got a DELETE request at /user');
+  });
+  
+  app.use((req, res, next) => {
+    res.status(404).send('Error 404: Not Found');
+  });
+
 app.listen(PORT, () => {
-  console.log(`Servidor API escuchando en http://localhost:${PORT}?name=Eduardo&lastName=Lara`);
+  console.log(`Servidor API escuchando en http://localhost:${PORT}/users/?name=Eduardo&lastName=Lara`);
 });
